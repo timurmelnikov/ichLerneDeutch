@@ -2,10 +2,19 @@
     <v-app>
         <v-toolbar app dark class="primary">
             <v-toolbar-title v-text="'Ich Learn Deutsh'"></v-toolbar-title>
-            <v-btn flat :href="linkLesson">{{Math.floor(timeLesson / 60).toString()+':' + (timeLesson % 60).toString()}}</v-btn>
+            <v-btn flat :href="linkLesson">{{timeLessonM+':' + timeLessonS}}
+            </v-btn>
             <v-spacer></v-spacer>
             <v-toolbar-items>
-                <v-btn flat>Button 1</v-btn>
+                <v-btn
+                        v-for="(item, i) in menuItems"
+                        :key="i"
+                        :to="item.route"
+                        flat
+                >
+                    <v-icon left v-html="item.icon"></v-icon>
+                    {{item.title}}
+                </v-btn>
             </v-toolbar-items>
         </v-toolbar>
     </v-app>
@@ -13,16 +22,50 @@
 
 <script>
     export default {
-        data () {
+        data() {
             return {
-                timeLesson: '1100',
-
+                timeLessonM: 40,
+                timeLessonS: 0
             }
         },
         computed: {
-            linkLesson (){
+            linkLesson: function () {
                 let link = 'https://www.youtube.com/watch?v=xodyM-xXrl4&list=PLu_62Q68DvTqmSjoY-3uPtJAXmT5WWMy1&index=2&t='
-                return link + this.timeLesson+'s'
+                return link + (this.timeLessonM * 60 + this.timeLessonS) + 's'
+            },
+            menuItems() {
+                return [
+                    {
+                        icon: 'visibility',
+                        title: 'Читать',
+                        route: '/books'
+                    },
+                    {
+                        icon: 'extension',
+                        title: 'Учить слова',
+                        route: '/words'
+                    },
+                    {
+                        icon: 'account_circle',
+                        title: 'Мой кабинет',
+                        route: '/profile'
+                    },
+                    {
+                        icon: 'exit_to_app',
+                        title: 'Выйти',
+                        route: '/logout'
+                    },
+                    {
+                        icon: 'input',
+                        title: 'Войти',
+                        route: '/signin'
+                    },
+                    {
+                        icon: 'lock_open',
+                        title: 'Зарегистрироваться',
+                        route: '/signup'
+                    }
+                ]
             }
         }
     }
