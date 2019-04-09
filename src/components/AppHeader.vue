@@ -1,5 +1,5 @@
 <template>
-    <v-app>
+    <div>
         <v-navigation-drawer absolute temporary v-model="drawer" class="hidden-md-and-up">
             <v-list>
                 <v-list-tile v-for="(item, i) in menuItems" :key="`navDrawer${i}`">
@@ -30,15 +30,15 @@
                 </v-btn>
             </v-toolbar-items>
         </v-toolbar>
-    </v-app>
+    </div>
 </template>
 
 <script>
     export default {
         data() {
             return {
-                timeLessonM: 39,
-                timeLessonS: 25,
+                timeLessonM: 50,
+                timeLessonS: 40,
                 drawer: false
             }
         },
