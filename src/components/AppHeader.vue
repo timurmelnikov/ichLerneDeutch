@@ -14,7 +14,9 @@
         </v-navigation-drawer>
         <v-toolbar app dark class="primary">
             <v-toolbar-side-icon @click.stop="drawer = !drawer" class="hidden-md-and-up"></v-toolbar-side-icon>
-            <v-toolbar-title v-text="'Ich Learn Deutsh'"></v-toolbar-title>
+            <router-link :to="'/'" tag="span" style="cursor:pointer">
+                <v-toolbar-title v-text="'Ich Learn Deutsh'"></v-toolbar-title>
+            </router-link>
             <v-btn flat :href="linkLesson">{{timeLessonM+':' + timeLessonS}}
             </v-btn>
             <v-spacer></v-spacer>
@@ -37,14 +39,14 @@
     export default {
         data() {
             return {
-                timeLessonM: 50,
-                timeLessonS: 40,
+                timeLessonM: 0,
+                timeLessonS: 0,
                 drawer: false
             }
         },
         computed: {
             linkLesson: function () {
-                let link = 'https://www.youtube.com/watch?v=xodyM-xXrl4&list=PLu_62Q68DvTqmSjoY-3uPtJAXmT5WWMy1&index=2&t='
+                let link = 'https://www.youtube.com/watch?v=zozB9gEEM0U&list=PLu_62Q68DvTqmSjoY-3uPtJAXmT5WWMy1&index=2&t='
                 return link + (this.timeLessonM * 60 + this.timeLessonS) + 's'
             },
             menuItems() {
