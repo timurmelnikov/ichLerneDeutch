@@ -17,7 +17,12 @@
             <router-link :to="'/'" tag="span" style="cursor:pointer">
                 <v-toolbar-title v-text="'Ich Learn Deutsh'"></v-toolbar-title>
             </router-link>
-            <v-btn flat :href="linkLesson">{{timeLessonM+':' + timeLessonS}}
+            <v-btn
+                    flat
+                    :href="linkLesson"
+                    target="_blank"
+            >{{timeLessonM+':' + timeLessonS}}
+
             </v-btn>
             <v-spacer></v-spacer>
             <v-toolbar-items class="hidden-sm-and-down">
@@ -39,8 +44,8 @@
     export default {
         data() {
             return {
-                timeLessonM: 0,
-                timeLessonS: 0,
+                timeLessonM: 12,
+                timeLessonS: 10,
                 drawer: false
             }
         },
