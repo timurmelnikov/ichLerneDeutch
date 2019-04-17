@@ -44,8 +44,8 @@
     export default {
         data() {
             return {
-                timeLessonM: 12,
-                timeLessonS: 10,
+                timeLessonM: 19,
+                timeLessonS: 51,
                 drawer: false
             }
         },
